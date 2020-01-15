@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicTacToe</title>
+    <style>
+        .square{
+            width: 4rem;
+            height: 4rem;
+            border: 3px solid black;
+            text-align: center;
+            font-size: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <table id="table">
+        <tbody>
+            <tr>
+                <td class="square" id="1"></td>
+                <td class="square" id="2"></td>
+                <td class="square" id="3"></td>
+            </tr>
+            <tr>
+                <td class="square" id="4"></td>
+                <td class="square" id="5"></td>
+                <td class="square" id="6"></td>
+            </tr>
+            <tr>
+                <td class="square" id="7"></td>
+                <td class="square" id="8"></td>
+                <td class="square" id="9"></td>
+            </tr>
+        </tbody>
+        
+    </table>
+    <div id="nextPlayer">X's move</div>
+
+
+    <script>
+        let player = 'X';
+        let squares = document.getElementsByClassName('square');
+        for(i = 0; i < squares.length; i++){
+           squares[i].addEventListener('click', function(e){
+               console.log(this.id - 1);
+                if(player === 'X'){
+                    document.getElementById(this.id).innerHTML = 'X';
+                    player = 'O';
+                    
+                }else{
+                    document.getElementById(this.id).innerHTML = 'O';
+                    player = 'X';
+                }
+                document.getElementById('nextPlayer').innerHTML = player + "'s move";
+               
+                    if(squares[0].innerHTML != '' && squares[0].innerHTML === squares[1].innerHTML && squares[0].innerHTML === squares[2].innerHTML){
+                        winner(this.id);
+                    }else if(squares[0].innerHTML != '' && squares[0].innerHTML === squares[3].innerHTML && squares[0].innerHTML === squares[6].innerHTML){
+                        winner(this.id);
+                    }else if(squares[0].innerHTML != '' && squares[0].innerHTML === squares[6].innerHTML && squares [0].innerHTML === squares[8].innerHTML){
+                        winner(this.id);
+                    }
+                
+                    else if(squares[8].innerHTML != '' && squares[8].innerHTML === squares[5].innerHTML && squares[8].innerHTML === squares[2].innerHTML){
+                        winner(this.id);
+                    }else if(squares[8].innerHTML != '' && squares[8].innerHTML === squares[7].innerHTML && squares[8].innerHTML === squares[6].innerHTML){
+                        winner(this.id);
+                    }else if(squares[0].innerHTML != '' && squares[0].innerHTML === squares[4].innerHTML && squares [0].innerHTML === squares[8].innerHTML){
+                        winner(this.id);
+                    }
+                
+                    else if(squares[1].innerHTML != '' && squares[1].innerHTML === squares[4].innerHTML && squares[1].innerHTML === squares[7]){
+                        winner(this.id);
+                    }
+               
+                    else if(squares[3].innerHTML != '' && squares[3].innerHTML === squares[4].innerHTML && squares[3].innerHTML === squares[5].innerHTML){
+                        winner(this.id);
+                    }
+                
+           });
+           
+        }
+
+        function winner(id){
+            document.getElementById('nextPlayer').innerHTML = document.getElementById(id).innerHTML + ' wins!';
+            document.getElementById('table').style.backgroundColor = 'lime';
+        }
+
+        
+    </script>
+    
+</body>
+</html>
