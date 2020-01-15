@@ -43,6 +43,8 @@
         let player = 'X';
         let squares = document.getElementsByClassName('square');
         function reset(){
+            document.getElementById('nextPlayer').innerHTML = player + "'s move";
+               
             for(i = 0; i < squares.length; i++){
                 squares[i].addEventListener('click', mark);
                 squares[i].innerHTML = '';
