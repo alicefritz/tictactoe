@@ -14,83 +14,100 @@
         }
     </style>
 </head>
-<body>
+<body onload='reset()'>
     <table id="table">
         <tbody>
             <tr>
+                <td class="square" id="0"></td>
                 <td class="square" id="1"></td>
                 <td class="square" id="2"></td>
-                <td class="square" id="3"></td>
             </tr>
             <tr>
+                <td class="square" id="3"></td>
                 <td class="square" id="4"></td>
                 <td class="square" id="5"></td>
-                <td class="square" id="6"></td>
             </tr>
             <tr>
+                <td class="square" id="6"></td>
                 <td class="square" id="7"></td>
                 <td class="square" id="8"></td>
-                <td class="square" id="9"></td>
             </tr>
         </tbody>
         
     </table>
     <div id="nextPlayer">X's move</div>
+    <button id="resetButton" onclick='reset()'>Reset</button>
 
 
     <script>
         let player = 'X';
         let squares = document.getElementsByClassName('square');
-        for(i = 0; i < squares.length; i++){
-           squares[i].addEventListener('click', function(e){
+        function reset(){
+            for(i = 0; i < squares.length; i++){
+                squares[i].addEventListener('click', mark);
+                squares[i].innerHTML = '';
+                player = 'X';
+               document.getElementById(i).style.backgroundColor = 'white';
+            }
+        }
+        
+           function mark(e){
                console.log(this.id - 1);
                 if(player === 'X'){
                     document.getElementById(this.id).innerHTML = 'X';
+                    
                     player = 'O';
                     
                 }else{
                     document.getElementById(this.id).innerHTML = 'O';
                     player = 'X';
                 }
+                document.getElementById(this.id).removeEventListener('click', mark);
                 document.getElementById('nextPlayer').innerHTML = player + "'s move";
                
                     if(squares[0].innerHTML != '' && squares[0].innerHTML === squares[1].innerHTML && squares[0].innerHTML === squares[2].innerHTML){
-                        winner(this.id);
+                        winner(this.id, 0, 1, 2);
                     }else if(squares[0].innerHTML != '' && squares[0].innerHTML === squares[3].innerHTML && squares[0].innerHTML === squares[6].innerHTML){
-                        winner(this.id);
+                        winner(this.id, 0, 3, 6);
                     }else if(squares[0].innerHTML != '' && squares[0].innerHTML === squares[6].innerHTML && squares [0].innerHTML === squares[8].innerHTML){
-                        winner(this.id);
+                        winner(this.id, 0, 6, 8);
                     }
                 
                     else if(squares[8].innerHTML != '' && squares[8].innerHTML === squares[5].innerHTML && squares[8].innerHTML === squares[2].innerHTML){
-                        winner(this.id);
+                        winner(this.id, 8, 5, 2);
                     }else if(squares[8].innerHTML != '' && squares[8].innerHTML === squares[7].innerHTML && squares[8].innerHTML === squares[6].innerHTML){
-                        winner(this.id);
+                        winner(this.id, 8, 7, 6);
                     }else if(squares[0].innerHTML != '' && squares[0].innerHTML === squares[4].innerHTML && squares [0].innerHTML === squares[8].innerHTML){
-                        winner(this.id);
+                        winner(this.id, 0, 4, 8);
                     }
                 
                     else if(squares[1].innerHTML != '' && squares[1].innerHTML === squares[4].innerHTML && squares[1].innerHTML === squares[7]){
-                        winner(this.id);
+                        winner(this.id, 1, 4, 7);
                     }
                
                     else if(squares[3].innerHTML != '' && squares[3].innerHTML === squares[4].innerHTML && squares[3].innerHTML === squares[5].innerHTML){
-                        winner(this.id);
+                        winner(this.id, 3, 4, 5);
                     }else if(squares[2].innerHTML != '' && squares[2].innerHTML === squares[6].innerHTML && squares[2].innerHTML === squares[4].innerHTML){
-                        winner(this.id);
+                        winner(this.id,2, 6, 4);
                     }
                 
-           });
+           }
            
-        }
+        
 
-        function winner(id){
+        function winner(id,sqr1, sqr2, sqr3){
             document.getElementById('nextPlayer').innerHTML = document.getElementById(id).innerHTML + ' wins!';
-            document.getElementById('table').style.backgroundColor = 'lime';
+            //document.getElementById('table').style.backgroundColor = 'lime';
+            document.getElementById(sqr1).style.backgroundColor = 'lime';
+            document.getElementById(sqr2).style.backgroundColor = 'lime';
+            document.getElementById(sqr3).style.backgroundColor = 'lime';
+            for(i = 0; i < squares.length; i++){
+                squares[i].removeEventListener('click', mark);
+            }
         }
 
         
     </script>
     
-</body>
+</body o>
 </html>
