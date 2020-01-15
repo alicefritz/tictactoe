@@ -88,7 +88,7 @@
                     else if(squares[3].innerHTML != '' && squares[3].innerHTML === squares[4].innerHTML && squares[3].innerHTML === squares[5].innerHTML){
                         winner(this.id, 3, 4, 5);
                     }else if(squares[2].innerHTML != '' && squares[2].innerHTML === squares[6].innerHTML && squares[2].innerHTML === squares[4].innerHTML){
-                        winner(this.id,2, 6, 4);
+                        winner(this.id, 2, 6, 4);
                     }
                 
            }
@@ -98,7 +98,7 @@
         function winner(id,sqr1, sqr2, sqr3){
             document.getElementById('nextPlayer').innerHTML = document.getElementById(id).innerHTML + ' wins!';
             //document.getElementById('table').style.backgroundColor = 'lime';
-            document.getElementById(sqr1).style.backgroundColor = 'lime';
+            document.getElementById(sqr1, sqr2, sqr3).style.backgroundColor = 'lime';
             document.getElementById(sqr2).style.backgroundColor = 'lime';
             document.getElementById(sqr3).style.backgroundColor = 'lime';
             for(i = 0; i < squares.length; i++){
