@@ -43,6 +43,8 @@
         let player = 'X';
         let squares = document.getElementsByClassName('square');
         function reset(){
+            document.getElementById('nextPlayer').innerHTML = player + "'s move";
+               
             for(i = 0; i < squares.length; i++){
                 squares[i].addEventListener('click', mark);
                 squares[i].innerHTML = '';
@@ -69,9 +71,9 @@
                         winner(this.id, 0, 1, 2);
                     }else if(squares[0].innerHTML != '' && squares[0].innerHTML === squares[3].innerHTML && squares[0].innerHTML === squares[6].innerHTML){
                         winner(this.id, 0, 3, 6);
-                    }else if(squares[0].innerHTML != '' && squares[0].innerHTML === squares[6].innerHTML && squares [0].innerHTML === squares[8].innerHTML){
-                        winner(this.id, 0, 6, 8);
-                    }
+                   // }else if(squares[0].innerHTML != '' && squares[0].innerHTML === squares[6].innerHTML && squares [0].innerHTML === squares[8].innerHTML){
+                      //  winner(this.id, 0, 6, 8);
+                    //}
                 
                     else if(squares[8].innerHTML != '' && squares[8].innerHTML === squares[5].innerHTML && squares[8].innerHTML === squares[2].innerHTML){
                         winner(this.id, 8, 5, 2);
