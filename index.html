@@ -76,6 +76,8 @@
                
                     else if(squares[3].innerHTML != '' && squares[3].innerHTML === squares[4].innerHTML && squares[3].innerHTML === squares[5].innerHTML){
                         winner(this.id);
+                    }else if(squares[2].innerHTML != '' && squares[2].innerHTML === squares[6].innerHTML && squares[2].innerHTML === squares[4].innerHTML){
+                        winner(this.id);
                     }
                 
            });
