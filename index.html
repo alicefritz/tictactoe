@@ -49,6 +49,7 @@
                 squares[i].addEventListener('click', mark);
                 squares[i].innerHTML = '';
                 player = 'X';
+                document.getElementById('nextPlayer').innerHTML = player + "'s move";
                document.getElementById(i).style.backgroundColor = 'white';
             }
         }
@@ -70,12 +71,8 @@
                     if(squares[0].innerHTML != '' && squares[0].innerHTML === squares[1].innerHTML && squares[0].innerHTML === squares[2].innerHTML){
                         winner(this.id, 0, 1, 2);
                     }else if(squares[0].innerHTML != '' && squares[0].innerHTML === squares[3].innerHTML && squares[0].innerHTML === squares[6].innerHTML){
-                        winner(this.id, 0, 3, 6);
-                   // }else if(squares[0].innerHTML != '' && squares[0].innerHTML === squares[6].innerHTML && squares [0].innerHTML === squares[8].innerHTML){
-                      //  winner(this.id, 0, 6, 8);
-                    //}
-                
-                    else if(squares[8].innerHTML != '' && squares[8].innerHTML === squares[5].innerHTML && squares[8].innerHTML === squares[2].innerHTML){
+                        winner(this.id, 0, 3, 6)
+                    } else if(squares[8].innerHTML != '' && squares[8].innerHTML === squares[5].innerHTML && squares[8].innerHTML === squares[2].innerHTML){
                         winner(this.id, 8, 5, 2);
                     }else if(squares[8].innerHTML != '' && squares[8].innerHTML === squares[7].innerHTML && squares[8].innerHTML === squares[6].innerHTML){
                         winner(this.id, 8, 7, 6);
